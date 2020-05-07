@@ -1,4 +1,0 @@
-
-export const GET_LOCATION = "GET_LOCATION";
-export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
-
