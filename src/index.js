@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {createStore, combineReducers} from "redux";
 import * as reducers from './state/reducers';
 import {Provider} from "react-redux";
+import {BrowserRouter as Router} from "react-router-dom"
 
 
 
@@ -19,7 +20,9 @@ const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <Provider store = {store}><App /></Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
