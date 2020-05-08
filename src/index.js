@@ -4,9 +4,25 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {createStore, combineReducers} from "redux";
+import * as reducers from './state/reducers';
+import {Provider} from "react-redux";
+import {BrowserRouter as Router} from "react-router-dom"
+
+
+
+const rootReducer = combineReducers( {
+  location: reducers.locationReducer
+}
+)
+const store = createStore(rootReducer);
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+    <Provider store = {store}><App /></Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -15,3 +31,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
