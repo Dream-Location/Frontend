@@ -1,6 +1,8 @@
 import React, {useRef} from "react";
 import axios from "axios";
 import styled from "styled-components"
+import {Link} from "react-router-dom";
+
 
 
 const SignupStyle = styled.div `
@@ -95,6 +97,20 @@ const SignupStyle = styled.div `
         }
     }
 
+    .switchpage{
+        text-align: center;
+    }
+
+    a{
+        color: #faedB8;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: grey;
+        text-decoration: underline;
+    }
+
 `
 
 
@@ -140,10 +156,11 @@ export default function Signup (props){
            <div className = "signup-form">
                 <h1>Sign up</h1>
                 <form>
-                        <input name = "username" type = "text" ref={usernameRef} placeholder= "username"/>
-                        <input name = "password" type ="password" ref ={passwordRef} placeholder= "password"/>
-                        <input name = "confirm password" type ="password" ref ={confirmPasswordRef} placeholder = "confirm password"/>
+                    <input name = "username" type = "text" ref={usernameRef} placeholder= "username"/>
+                    <input name = "password" type ="password" ref ={passwordRef} placeholder= "password"/>
+                    <input name = "confirm password" type ="password" ref ={confirmPasswordRef} placeholder = "confirm password"/>
                     <button onClick = {submit}>Submit</button>
+                    <p class = "switchpage">Already have an existing account? <Link exact to= "/login">Log In</Link></p>
                 </form>
             </div>
         </SignupStyle>
