@@ -1,6 +1,8 @@
 import React, {useRef} from "react";
 import axios from "axios";
 import styled from "styled-components"
+import {Link} from "react-router-dom";
+
 
 
 const SignupStyle = styled.div `
@@ -9,7 +11,11 @@ const SignupStyle = styled.div `
     max-width: 100vw;
     display:flex;
     justify-content: center;
-    background-color: pink;
+    background-color: #faedB8;
+
+    h1{
+        text-align: center;
+    }
 
     .signup-form{
         box-sizing: border-box;
@@ -18,6 +24,10 @@ const SignupStyle = styled.div `
         margin-top: 10%;
         background-color: white;
         border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
     }
 
     @media only screen and (max-width: 900px){
@@ -48,24 +58,59 @@ const SignupStyle = styled.div `
     input{
         display: block;
         width: 60%;
-        margin: 0.5rem auto;
+        margin: 1rem auto;
         height: 2rem;
     }
 
+
+
+    button{
+        display: block;
+        width: 30%;
+        height: 4em;
+        margin: 0 auto;
+        border-radius: 5px;
+        background-color: #faedB8;
+        border-color: #faedB8;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    button:hover{
+        color: #faedB8;;
+        background-color: #fff;
+    }
+   
+
     @media only screen and (max-width: 900px){
         input{
-            margin-bottom: 2rem
+            margin-bottom: 2rem;
         }
     }
 
     @media only screen and (max-width: 600px){
         h1{
-            margin-bottom: 2rem;
+            margin-bottom: 5rem;
         }
         input{
-            margin: 3rem auto;
+            margin: 1rem auto 7rem auto;
         }
     }
+
+    .switchpage{
+        text-align: center;
+    }
+
+    a{
+        color: #faedB8;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: grey;
+        text-decoration: underline;
+    }
+
 `
 
 
@@ -73,24 +118,34 @@ export default function Signup (props){
 
     const usernameRef = useRef();
     const passwordRef = useRef();
+    const confirmPasswordRef = useRef()
 
     function submit(event){
         event.preventDefault();
 
-        axios.post("", {
+        if(confirmPasswordRef.current.value !==  passwordRef.current.value){
+            alert('passwords do not match')
+        }
+
+        else{
+
+            axios.post("https://dreamlocations.herokuapp.com/auth/register", {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
-            confirmPassword: passwordRef.current.value
-        })
+            })
 
-        .then(response =>{
-            localStorage.setItem('token', response.data.token)
-            props.history.push()
-        })
+            .then(response =>{
+                localStorage.setItem('token', response.data.token)
+                props.history.push("/home")
+            })
 
-        .catch(error => {
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
+
+        }
+
+        
 
     }
 
@@ -101,19 +156,11 @@ export default function Signup (props){
            <div className = "signup-form">
                 <h1>Sign up</h1>
                 <form>
-                    <label>
-                        Username
-                        <input name = "username" type = "text" ref={usernameRef}/>
-                    </label>
-                    <label>
-                        Password
-                        <input name = "password" type ="password" ref ={passwordRef}/>
-                    </label>
-                    <label>
-                        Confirm password
-                        <input name = "confirm password" type ="password" ref ={passwordRef}/>
-                    </label>
+                    <input name = "username" type = "text" ref={usernameRef} placeholder= "username"/>
+                    <input name = "password" type ="password" ref ={passwordRef} placeholder= "password"/>
+                    <input name = "confirm password" type ="password" ref ={confirmPasswordRef} placeholder = "confirm password"/>
                     <button onClick = {submit}>Submit</button>
+                    <p class = "switchpage">Already have an existing account? <Link exact to= "/login">Log In</Link></p>
                 </form>
             </div>
         </SignupStyle>
