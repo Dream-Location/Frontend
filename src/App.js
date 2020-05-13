@@ -8,6 +8,7 @@ import LocationList from "./components/LocationList";
 
 
 function App() {
+  
   const [locations, setLocations] = useState([])
   return (
     <div className="App">

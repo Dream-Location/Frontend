@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import axiosWithAuth from "../axiosWithAuth/index";
 
 
 function LocationList (props){
 
     useEffect(()=>{
-        axios.get('https://dreamlocations.herokuapp.com/api/location/')
+        axiosWithAuth()
+        .get('https://dreamlocations.herokuapp.com/api/location/')
         .then(response =>{
             props.setLocations(response.data.locations)
         })
@@ -25,8 +26,8 @@ function LocationList (props){
                     <div className = "location-properties">
                         <p>{location.description}</p>
                         <p>{location.city}, {location.country}</p>
-                        <h3>{location.price}</h3>
-                        <p>{location.rating}stars</p>
+                        <h3>G{location.price}</h3>
+                        <p>{location.rating} stars</p>
                     </div>
 
                 </div>
