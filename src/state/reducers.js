@@ -1,4 +1,4 @@
-import {GET_LOCATION, ADD_TO_FAVOURITE} from './actionTypes'
+import {GET_LOCATION} from './actionTypes'
 
 
 const initialState = {
