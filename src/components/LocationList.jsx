@@ -35,6 +35,14 @@ const HomeStyle = styled.div `
         }
     }
 
+    @media only screen and (max-width:500px){
+
+        .location-container{
+            width: 60%;
+            margin: 2rem 0;
+        }
+    }
+
     .location-image{
         height: 150px;
         width:100%;
