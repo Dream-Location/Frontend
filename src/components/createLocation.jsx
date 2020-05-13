@@ -3,7 +3,7 @@ import axiosWithAuth from "../axiosWithAuth/index";
 
 
 
-export default function CreateLocation(){
+export default function CreateLocation(props){
     const description = useRef();
     const imageURL = useRef();
     const city = useRef();
@@ -16,12 +16,12 @@ export default function CreateLocation(){
         event.preventDefault();
         axiosWithAuth()
         .post('https://dreamlocations.herokuapp.com/api/location', {
-            description = description.current.value,
-            imageURL = imageURL.current.value,
-            city = city.current.value,
-            country = country.current.value,
-            price = price.current.value,
-            rating = rating.current.value,
+            description: description.current.value,
+            imageURL: imageURL.current.value,
+            city: city.current.value,
+            country: country.current.value,
+            price: price.current.value,
+            rating: rating.current.value,
         })
         .then(response =>{
             props.newLocation(response.data.locations)
