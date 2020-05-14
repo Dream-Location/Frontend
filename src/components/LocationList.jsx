@@ -60,7 +60,7 @@ function LocationList (props){
 
     useEffect(()=>{
         axiosWithAuth()
-        .get('https://dreamlocations.herokuapp.com/api/location/')
+        .get('https://dreamlocations.herokuapp.com/api/location')
         .then(response =>{
             props.setLocations(response.data.locations)
         })

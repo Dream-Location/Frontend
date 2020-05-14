@@ -121,7 +121,7 @@ export default function LogIn(props){
     function submit(event){
         event.preventDefault()
 
-        axios.post("https://dreamlocations.herokuapp.com/auth/login", {
+        axios.post("https://dreamlocations.herokuapp.com/api/auth/login", {
             username: usernameRef.current.value,
             password: passwordRef.current.value
         })
