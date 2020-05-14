@@ -75,7 +75,7 @@ function LocationList (props){
             <h1>Welcome</h1>
                 <div className = "locations-conatiner">
                 {props.locations.map(location =>(
-                    <div className = "location-container">
+                    <div className = "location-container" key = {location.id}>
                         <div className = "location-image">
                             <img src = {location.imageUrl} alt = {location.description}/>
                         </div>
