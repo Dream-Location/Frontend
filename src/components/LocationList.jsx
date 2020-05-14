@@ -23,7 +23,7 @@ const HomeStyle = styled.div `
         height: auto;
         display: flex;
         flex-direction: column;
-        justfiy-content: center;
+        justify-content: center;
         align-items: center;
         border-radius: 20px;
         box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
