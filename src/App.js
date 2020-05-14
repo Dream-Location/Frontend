@@ -4,7 +4,7 @@ import Signup from "./components/SignUp";
 import { Route, Redirect } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import LocationList from "./components/LocationList";
-import CreateLocation from "./components/CreateLocation";
+import CreateLocation from "./components/createLocation";
 import Favourites from "./components/Favourites";
 
 
