@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import { Card, CardWrapper } from 'react-swipeable-cards';
 import EndCard from "./EndCard";
 import axiosWithAuth from "../../axiosWithAuth/index";
+import styled from "styled-components";
+
+const LocationCardStyle = styled.div `
+
+`
 
 export default class SwipeCard extends Component {
   constructor(props) {
@@ -47,16 +51,38 @@ export default class SwipeCard extends Component {
     )
   }
   render() {
+    const wrapperStyle = {
+      backgroundColor: "#faedB8"
+    }
+    
+    const cardStyle = {
+      backgroundColor: "#fff"
+    }
     return(
-      <CardWrapper addEndCard = {this.getEndCard.bind(this)}>
+      <CardWrapper addEndCard = {this.getEndCard.bind(this)} style = {wrapperStyle}>
         {this.state.locations.map ((location) => (
-          <Card>
-            {/* <img src={location.imageUrl} alt="room"/> */}
-            <h1>{location.description}</h1>
-            <p>{location.city}</p>
-            <p>{location.country}</p>
-            <p>${location.price}</p>
-            <p>{location.rating} stars</p>
+          <Card 
+          style = {cardStyle}
+          key = {location.id}
+          onSwipe={this.onSwipe.bind(this)}
+          onSwipeLeft={this.onSwipeLeft.bind(this)}
+          onSwipeRight={this.onSwipeRight.bind(this)}
+          onDoubleTap={this.onDoubleTap.bind(this)}
+          >
+            <LocationCardStyle>
+              <div className = "locationCard-conatiner" >
+                <div className = "locationCard-image">
+                  {/* <img src={location.imageUrl} alt="room"/> */}
+                </div>
+                <div className="locationCard-properties">
+                  <h1>{location.description}</h1>
+                  <p>{location.city}</p>
+                  <p>{location.country}</p>
+                  <h3>${location.price}</h3>
+                  <p>{location.rating} stars</p>
+                </div>
+              </div>
+            </LocationCardStyle>
           </Card>
           ))}
       </CardWrapper>
@@ -64,4 +90,3 @@ export default class SwipeCard extends Component {
   }
 }
 
-/* here */
