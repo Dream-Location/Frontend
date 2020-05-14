@@ -82,7 +82,7 @@ export default function CreateLocation(props){
     function createlocation(event){
         event.preventDefault();
         axiosWithAuth()
-        .post('https://dreamlocations.herokuapp.com/api/location/', {
+        .post('https://dreamlocations.herokuapp.com/api/location', {
             description: description.current.value,
             imageURL: imageURL.current.value,
             city: city.current.value,
