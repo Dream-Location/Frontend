@@ -6,6 +6,7 @@ import LogIn from "./components/LogIn";
 import LocationList from "./components/LocationList";
 import CreateLocation from "./components/createLocation";
 import Favourites from "./components/Favourites";
+import SwipeCard from "./components/Cards/SwipeCard";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <Route exact path = "/" component = {Signup}/>
       <Route path = "/login" component = {LogIn}/>
+      <Route path = "/location" component = {SwipeCard}/>
       <Route
         path = "/home"
         render = {props => {
