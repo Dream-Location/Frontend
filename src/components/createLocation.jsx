@@ -91,7 +91,6 @@ export default function CreateLocation(props){
             rating: ratingRef.current.value,
         })
         .then(response =>{
-            props.newLocation(response.data.locations)
             props.history.push("/home")
         })
         .catch(error =>{
