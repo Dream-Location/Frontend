@@ -90,6 +90,9 @@ function LocationList (props){
                 <Link to ="/createpost">
                     <button>Create Posting</button>
                 </Link>
+                <Link to ="/location">
+                    <button>Swipe Locations</button>
+                </Link>
             </nav>
         <div>
             <h1>Welcome</h1>

@@ -146,7 +146,7 @@ export default function LogIn(props){
                 <input type="text" name ="username" ref= {usernameRef} placeholder = "username"/>
                 <input type="password" name="password" ref ={passwordRef} placeholder = "password" />
                 <button onClick = {submit}>Log in </button>
-                <p className = "switchpage">Already have an existing account? <Link exact to= "/">Sign Up</Link></p>
+                <p className = "switchpage">Already have an existing account? <Link to= "/">Sign Up</Link></p>
             </div>
         </LoginStyle>
     )

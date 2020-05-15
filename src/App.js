@@ -24,7 +24,11 @@ function App() {
     <div className="App">
       <Route exact path = "/" component = {Signup}/>
       <Route path = "/login" component = {LogIn}/>
-      <Route path = "/location" component = {SwipeCard}/>
+      <Route 
+      exact
+      path="/location"
+      render={props => PrivateRoute(SwipeCard, props)}
+      />
       <Route
         path = "/home"
         render = {props => {
