@@ -4,8 +4,9 @@ import Signup from "./components/SignUp";
 import { Route, Redirect } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import LocationList from "./components/LocationList";
-import CreateLocation from "./components/CreateLocation";
+import CreateLocation from "./components/createLocation";
 import Favourites from "./components/Favourites";
+import SwipeCard from "./components/Cards/SwipeCard";
 
 
 function App() {
@@ -23,6 +24,11 @@ function App() {
     <div className="App">
       <Route exact path = "/" component = {Signup}/>
       <Route path = "/login" component = {LogIn}/>
+      <Route 
+      exact
+      path="/location"
+      render={props => PrivateRoute(SwipeCard, props)}
+      />
       <Route
         path = "/home"
         render = {props => {

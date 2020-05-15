@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axiosWithAuth from "../axiosWithAuth/index";
 import styled from "styled-components";
+import{ Link } from "react-router-dom";
 
 const HomeStyle = styled.div `
     min-height: 100vh;
@@ -22,16 +23,18 @@ const HomeStyle = styled.div `
         height: auto;
         display: flex;
         flex-direction: column;
-        justfiy-content: center;
+        justify-content: center;
         align-items: center;
         border-radius: 20px;
         box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
+        margin: 2rem auto;
     }
 
     @media only screen and (min-width:901px){
 
         .location-container{
             width: 25%;
+            margin: 2rem;
         }
     }
 
@@ -54,9 +57,20 @@ const HomeStyle = styled.div `
         width:100%;
         border-radius: 14px 14px 0 0 ;
     }
+
+    .location-properties{
+        margin: auto 0.5rem;
+    }
 `
 
 function LocationList (props){
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        props.history.push("/login")
+        console.log(props)
+      };
 
     useEffect(()=>{
         axiosWithAuth()
@@ -71,11 +85,20 @@ function LocationList (props){
 
     return(
         <HomeStyle>
+            <nav className="home-nav">
+                <button onClick={logout} >Logout</button>
+                <Link to ="/createpost">
+                    <button>Create Posting</button>
+                </Link>
+                <Link to ="/location">
+                    <button>Swipe Locations</button>
+                </Link>
+            </nav>
         <div>
             <h1>Welcome</h1>
                 <div className = "locations-conatiner">
                 {props.locations.map(location =>(
-                    <div className = "location-container">
+                    <div className = "location-container" key = {location.id}>
                         <div className = "location-image">
                             <img src = {location.imageUrl} alt = {location.description}/>
                         </div>

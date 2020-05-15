@@ -71,27 +71,26 @@ const NewPost = styled.div`
 
 
 export default function CreateLocation(props){
-    const description = useRef();
-    const imageURL = useRef();
-    const city = useRef();
-    const country = useRef();
-    const price = useRef();
-    const rating =useRef();
+    const descriptionRef= useRef();
+    const imageUrlRef = useRef();
+    const cityRef = useRef();
+    const countryRef = useRef();
+    const priceRef = useRef();
+    const ratingRef =useRef();
 
 
     function createlocation(event){
         event.preventDefault();
         axiosWithAuth()
         .post('https://dreamlocations.herokuapp.com/api/location', {
-            description: description.current.value,
-            imageURL: imageURL.current.value,
-            city: city.current.value,
-            country: country.current.value,
-            price: price.current.value,
-            rating: rating.current.value,
+            description: descriptionRef.current.value,
+            imageUrl: imageUrlRef.current.value,
+            city: cityRef.current.value,
+            country: countryRef.current.value,
+            price: priceRef.current.value,
+            rating: ratingRef.current.value,
         })
         .then(response =>{
-            props.newLocation(response.data.locations)
             props.history.push("/home")
         })
         .catch(error =>{
@@ -107,14 +106,14 @@ export default function CreateLocation(props){
                     <h1>Create new Posting</h1>
                     <p>*please fill in all fields</p>
                     <form>
-                        <input type="text" name = "image" placeholder = "image URL" ref={imageURL}/>
-                        <input type="text" name = "description" placeholder = "description" ref={description}/>
+                        <input type="text" name = "image" placeholder = "image URL" ref={imageUrlRef}/>
+                        <input type="text" name = "description" placeholder = "description" ref={descriptionRef}/>
                         <div className="post-location">
-                            <input type="text" name = "city" placeholder = "city" ref={city}/>
-                            <input type="text" name = "country" placeholder = "country" ref={country}/>
+                            <input type="text" name = "city" placeholder = "city" ref={cityRef}/>
+                            <input type="text" name = "country" placeholder = "country" ref={countryRef}/>
                         </div>
-                        <input type="number" name = "price" placeholder = "price" ref={price}/>
-                        <input type="number" name = "rating" placeholder = "rating" ref={rating}/>
+                        <input type="number" name = "price" placeholder = "price" ref={priceRef}/>
+                        <input type="number" name = "rating" placeholder = "rating" ref={ratingRef}/>
                         <button onClick = {createlocation}>Submit</button>
                     </form>
                 </div>
