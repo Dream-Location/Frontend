@@ -8,6 +8,7 @@ import styled from "styled-components";
 const LocationCardStyle = styled.div `
   height: 100%;
   border-radius: 10px;
+  pointer-events: none;
 
   .locationCard-image{
     width: 100%;
