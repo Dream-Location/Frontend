@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axiosWithAuth from "../axiosWithAuth/index";
 import styled from "styled-components";
 import{ Link } from "react-router-dom";
+import NavBar from './NavBar';
 
 const HomeStyle = styled.div `
     min-height: 100vh;
@@ -65,37 +66,21 @@ const HomeStyle = styled.div `
 
 function LocationList (props){
 
-    const logout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        props.history.push("/login")
-        console.log(props)
-      };
-
     useEffect(()=>{
         axiosWithAuth()
-        .get('https://dreamlocations.herokuapp.com/api/location')
+        .get(`https://dreamlocations.herokuapp.com/api/${props.value}`)
         .then(response =>{
             props.setLocations(response.data.locations)
         })
         .catch(error => {
             console.log(error)
         })
-    })
+    }, [])
 
     return(
         <HomeStyle>
-            <nav className="home-nav">
-                <button onClick={logout} >Logout</button>
-                <Link to ="/createpost">
-                    <button>Create Posting</button>
-                </Link>
-                <Link to ="/location">
-                    <button>Swipe Locations</button>
-                </Link>
-            </nav>
+            <NavBar favorites={true} logout={true} locations={true} />
         <div>
-            <h1>Welcome</h1>
                 <div className = "locations-conatiner">
                 {props.locations.map(location =>(
                     <div className = "location-container" key = {location.id}>
