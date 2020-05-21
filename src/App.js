@@ -5,7 +5,6 @@ import { Route, Redirect } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import LocationList from "./components/LocationList";
 import CreateLocation from "./components/createLocation";
-import Favourites from "./components/Favourites";
 import SwipeCard from "./components/Cards/SwipeCard";
 
 
@@ -26,14 +25,14 @@ function App() {
       <Route path = "/login" component = {LogIn}/>
       <Route 
       exact
-      path="/location"
+      path="/home"
       render={props => PrivateRoute(SwipeCard, props)}
       />
       <Route
-        path = "/home"
+        path = "/locations"
         render = {props => {
           return(
-            <LocationList {...props} locations = {locations} setLocations= {setLocations}/>
+            <LocationList {...props} locations = {locations} setLocations= {setLocations} value='location'/>
           )
         }}
       />
@@ -44,10 +43,10 @@ function App() {
       />
       <Route
         exact
-        path = "/favourite"
+        path = "/favourites"
         render = {props => {
           return(
-            <Favourites {...props} locations = {locations} setLocations = {setLocations}/>
+            <LocationList {...props} locations = {locations} setLocations= {setLocations} value='favourite'/>
           )
         }}
       />
