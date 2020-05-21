@@ -3,7 +3,7 @@ import { Card, CardWrapper } from 'react-swipeable-cards';
 import EndCard from "./EndCard";
 import axiosWithAuth from "../../axiosWithAuth/index";
 import styled from "styled-components";
-
+import NavBar from '../NavBar';
 
 const LocationCardStyle = styled.div `
   height: 100%;
@@ -88,6 +88,7 @@ export default class SwipeCard extends Component {
     }
     return(
       <div>
+        <NavBar favorites={true} logout={true} locations={true} />
         <CardWrapper addEndCard = {this.getEndCard.bind(this)} style = {wrapperStyle}>
         {this.state.locations.map ((location) => (
           <Card 
