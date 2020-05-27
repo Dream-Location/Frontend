@@ -3,16 +3,16 @@ import { Card, CardWrapper } from 'react-swipeable-cards';
 import EndCard from "./EndCard";
 import axiosWithAuth from "../../axiosWithAuth/index";
 import styled from "styled-components";
-import LocationList from "../LocationList";
-import { Link } from "react-router-dom"
+import NavBar from '../NavBar';
 
 const LocationCardStyle = styled.div `
   height: 100%;
   border-radius: 10px;
+  pointer-events: none;
 
   .locationCard-image{
     width: 100%;
-    height: 200px;
+    height: 280px;
     border-radius:10px 10px 0 0;
   }
 
@@ -50,39 +50,28 @@ export default class SwipeCard extends Component {
         })
   }
 
-
-  onSwipe(data) {
-    console.log("I was swiped.");
-  }
-
-  
-  
-
   onSwipeLeft(data) {
     console.log("I was swiped left.");
-    this.addToFave = () =>{
-      axiosWithAuth()
-      .get('https://dreamlocations.herokuapp.com/api/favourite')
-      .then(response => {
-        console.log(this.state.addToFave)
-        this.setState({
-          addToFave: this.state.addToFave
-        })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    }
-    
+      
   }
 
   onSwipeRight(data) {
     console.log("I was swiped right.");
+    console.log(data)
+      const payload = {
+        location: data.id
+      }
+      axiosWithAuth()
+      .post('https://dreamlocations.herokuapp.com/api/favourite', payload)
+      .then(response => {
+        alert("added to favourites")
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
-  onDoubleTap(data) {
-    console.log("I was double tapped.");
-  }
   getEndCard(){
     return(
       <EndCard/>
@@ -94,18 +83,20 @@ export default class SwipeCard extends Component {
     }
     
     const cardStyle = {
-      backgroundColor: "#fff"
+      backgroundColor: "#fff",
+      minWidth: "60vw"
     }
     return(
-      <CardWrapper addEndCard = {this.getEndCard.bind(this)} style = {wrapperStyle}> 
+      <div>
+        <NavBar favorites={true} logout={true} locations={true} />
+        <CardWrapper addEndCard = {this.getEndCard.bind(this)} style = {wrapperStyle}>
         {this.state.locations.map ((location) => (
           <Card 
           style = {cardStyle}
           key = {location.id}
-          onSwipe={this.onSwipe.bind(this)}
           onSwipeLeft={this.onSwipeLeft.bind(this)}
           onSwipeRight={this.onSwipeRight.bind(this)}
-          onDoubleTap={this.onDoubleTap.bind(this)}
+          data={location}
           >
             <LocationCardStyle>
               <div className = "locationCard-conatiner" >
@@ -123,6 +114,7 @@ export default class SwipeCard extends Component {
           </Card>
           ))}
       </CardWrapper>
+      </div>
     );
   }
 }
