@@ -79,7 +79,7 @@ function LocationList (props){
 
     return(
         <HomeStyle>
-            <NavBar favorites={true} logout={true} locations={true} />
+            <NavBar addpost ={true} home ={true} favorites={true} logout={true} locations={true}/>
         <div>
                 <div className = "locations-conatiner">
                 {props.locations.map(location =>(
@@ -90,7 +90,7 @@ function LocationList (props){
                         <div className = "location-properties">
                             <p>{location.description}</p>
                             <p>{location.city}, {location.country}</p>
-                            <h3>G{location.price}</h3>
+                            <h3>${location.price}</h3>
                             <p>{location.rating} stars</p>
                         </div>
 

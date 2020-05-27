@@ -74,7 +74,7 @@ const NavStyle = styled.div `
 `
 
 const NavBar = (props) => {
-  const { back, locations, favorites, login, register, logout } = props
+  const { back, locations, favorites, login, register, logout, home, addpost } = props
 
 
   const onLogout = event => {
@@ -91,14 +91,15 @@ const NavBar = (props) => {
     <NavStyle>
     <header className='header-section' >
       <nav className="nav-bar">
-        {locations ? <Link to='/home'>LOCATIONS</Link> : null}
-        {favorites ? <Link to='/favourites'>FAVOURITES</Link> : null}
-        {back ? <Link onClick={goBack}>BACK</Link> : null}
-        {login ? <Link to='/login'>LOGIN</Link> : null}
-        {register ? <Link to='/'>REGISTER</Link> : null}
-        {logout ? <Link to='/' onClick={onLogout}>LOGOUT</Link> : null}
+        {home ? <Link to='/home'>Home</Link> : null}
+        {addpost ? <Link to='/addpost'>Add Posting</Link> : null}
+        {locations ? <Link to='/locations'>Swipe locations</Link> : null}
+        {favorites ? <Link to='/favourites'>Favourites</Link> : null}
+        {back ? <Link onClick={goBack}>Back</Link> : null}
+        {login ? <Link to='/login'>Login</Link> : null}
+        {register ? <Link to='/'>Register</Link> : null}
+        {logout ? <Link to='/' onClick={onLogout}>Logout</Link> : null}
       </nav>
-
     </header>
     </NavStyle>
   );

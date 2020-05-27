@@ -8,6 +8,7 @@ import CreateLocation from "./components/createLocation";
 import SwipeCard from "./components/Cards/SwipeCard";
 
 
+
 function App() {
 
   const PrivateRoute = (Component, props) => {
@@ -25,11 +26,11 @@ function App() {
       <Route path = "/login" component = {LogIn}/>
       <Route 
       exact
-      path="/home"
+      path="/locations"
       render={props => PrivateRoute(SwipeCard, props)}
       />
       <Route
-        path = "/locations"
+        path = "/home"
         render = {props => {
           return(
             <LocationList {...props} locations = {locations} setLocations= {setLocations} value='location'/>
@@ -38,7 +39,7 @@ function App() {
       />
       <Route
           exact
-          path="/createpost"
+          path="/addpost"
           render={props => PrivateRoute(CreateLocation, props)}
       />
       <Route

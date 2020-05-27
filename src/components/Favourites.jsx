@@ -27,7 +27,7 @@ function Favourites (props){
                     <div className = "location-properties">
                         <p>{location.description}</p>
                         <p>{location.city}, {location.country}</p>
-                        <h3>G{location.price}</h3>
+                        <h3>${location.price}</h3>
                         <p>{location.rating} stars</p>
                     </div>
 

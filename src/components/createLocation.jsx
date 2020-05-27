@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import axiosWithAuth from "../axiosWithAuth/index";
 import styled from "styled-components";
+import NavBar from './NavBar';
 
 const NewPost = styled.div`
     height: 100vh;
@@ -101,6 +102,7 @@ export default function CreateLocation(props){
 
     return(
         <NewPost>
+            <NavBar addpost ={true} home ={true} favorites={true} logout={true} locations={true}/>
             <div className = "newLocation">
                 <div className = "newLocation-form">
                     <h1>Create new Posting</h1>

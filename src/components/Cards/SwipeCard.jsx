@@ -88,7 +88,7 @@ export default class SwipeCard extends Component {
     }
     return(
       <div>
-        <NavBar favorites={true} logout={true} locations={true} />
+        <NavBar home ={true} favorites={true} logout={true} locations={true} />
         <CardWrapper addEndCard = {this.getEndCard.bind(this)} style = {wrapperStyle}>
         {this.state.locations.map ((location) => (
           <Card 

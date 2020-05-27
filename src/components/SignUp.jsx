@@ -129,7 +129,7 @@ export default function Signup (props){
 
         else{
 
-            axios.post("https://dreamlocations.herokuapp.com/api/auth/register", {
+            axios.post("https://dreamlocations.herokuapp.com/api/auth/register", { 
             username: usernameRef.current.value,
             password: passwordRef.current.value,
             })
