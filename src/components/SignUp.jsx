@@ -150,7 +150,6 @@ export default function Signup (props){
     }
 
 
-
     return(
        <SignupStyle>
            <div className = "signup-form">
@@ -160,7 +159,7 @@ export default function Signup (props){
                     <input name = "password" type ="password" ref ={passwordRef} placeholder= "password"/>
                     <input name = "confirm password" type ="password" ref ={confirmPasswordRef} placeholder = "confirm password"/>
                     <button onClick = {submit}>Submit</button>
-                    <p class = "switchpage">Already have an existing account? <Link exact to= "/login">Log In</Link></p>
+                    <p className = "switchpage">Already have an existing account? <Link to= "/login">Log In</Link></p>
                 </form>
             </div>
         </SignupStyle>
